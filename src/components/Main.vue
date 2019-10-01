@@ -8,7 +8,7 @@
             v-model="q"
             type="search"
             icon="magnify"
-            v-on:keyup.enter="search">
+            @keyup.native.enter="search">
         </b-input>
         <p class="control">
             <button @click="search" class="button is-primary">Search</button>
