@@ -10,6 +10,7 @@
             icon="magnify"
             @keyup.native.enter="search">
         </b-input>
+
         <p class="control">
             <button @click="search" class="button is-primary">Search</button>
         </p>
@@ -52,7 +53,6 @@
 
 import axios from 'axios'
 
-
 export default {
   data: function() {
         return {
@@ -67,6 +67,7 @@ export default {
                 total: 0,
                 jobsPerPage: 0
             },
+            address: '',
             curpage: 1,
             url: 'https://yawik.org/demo/de/jobboard',
         }
@@ -74,9 +75,10 @@ export default {
   name: 'Main',
   props: ['remote', 'widget-title', 'count', 'org'],
   mounted: function() {
-    this.load()
+    this.load();
   },
   methods: {
+
         search: function(){
             this.load();
         },
