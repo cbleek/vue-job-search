@@ -8,7 +8,7 @@
 export default {
   data() {
       return {
-          msg: "Header Text"
+          msg: "Footer Text"
       }
   }
 }
