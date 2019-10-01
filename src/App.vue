@@ -1,10 +1,8 @@
 <template>
   <div id="app">
     <app-header/>
-    test
     <app-main url="Welcome to Your Vue.js App"
       remote="https://yawik.org/demo/de/jobboard"   />
-    test
     <app-footer/>
   </div>
 </template>

@@ -1,16 +1,28 @@
 <template>
-  <main class="hello">
+    <main class="hello">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
     <h1>{{ url }}</h1>
-    Main Content
-    <b-button @click="clickMe" type="is-danger">Click-Me</b-button>
-                <b-button type="is-danger">Danger</b-button>
+
+    <b-field>
+        <b-input placeholder="Search..."
+            v-model="q"
+            type="search"
+            icon="magnify"
+            v-on:keyup.enter="search">
+        </b-input>
+        <p class="control">
+            <button @click="search" class="button is-primary">Search</button>
+        </p>
+    </b-field>
+
+    <h2>{{ result.total }} Jobs</h2>
 
     <b-table  :loading="loading" 
               paginated
-              
+              backend-pagination
               :data="jobs"
-              :total="total"
-              :per-page="jobsPerPage"
+              :total="result.total"
+              :per-page="result.jobsPerPage"
               aria-next-label="Next page"
               aria-previous-label="Previous page"
               aria-page-label="Page"
@@ -24,32 +36,15 @@
                     <a :href="props.row.link">{{ props.row.title }}</a>
                 </b-table-column>
                 <b-table-column field="organization" label="Organization" sortable>
+                    <img v-show="props.row.organizationLogo" :src="props.row.organizationLogo"/>
                     {{ props.row.organization }}
+                </b-table-column>
+                <b-table-column field="location" label="Location" sortable>
+                    {{ props.row.location }}
                 </b-table-column>
       </template>
     </b-table>
-    <table class="yawik-job-list-items">
-                <tbody>
-                    <tr v-for="job in result.jobs" :key="job.id">
-                        <td>
-                            <a :href="job.link">{{ job.title }}</a>
-                        </td>
-                        <td width="20%">
-                            <img v-if="job.organizationLogo" :src="job.organizationLogo" :alt="job.organization"/>
-                            <span v-else>{{ job.organization }}</span>
-                        </td>
-                        <td width="15%" v-if="job.locations.length">
-                            <div v-for="loc in job.locations" :key="loc.city">
-                                {{ loc.city ? loc.city : loc.region }}<br>
-                            </div>
-                        </td>
-                        <td width="15%" v-else>
-                            {{ job.location }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-  </main>
+    </main>
 </template>
 
 <script>
@@ -97,7 +92,6 @@ export default {
                 return;
             }
           
-
             var query = {
                 json: '1'
             }

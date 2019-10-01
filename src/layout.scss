@@ -1,13 +1,13 @@
 
-@import "node_modules/bulma/sass/utilities/_all";
-@import "node_modules/bulma/sass/elements/table";
-@import "node_modules/bulma/sass/components/dropdown";
-@import "node_modules/bulma/sass/components/navbar";
-@import "node_modules/bulma/sass/form/shared.sass";
+@import "node_modules/bulma/bulma.sass";
+// @import "node_modules/bulma/sass/elements/table";
+// @import "node_modules/bulma/sass/components/dropdown";
+// @import "node_modules/bulma/sass/components/navbar";
+// @import "node_modules/bulma/sass/form/shared.sass";
 
 
 // // Set your colors
-$primary: #8c67ef;
+$primary: rgb(35, 77, 37);
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
@@ -27,15 +27,15 @@ $colors: (
 );
 
 // // Links
-// $link: $primary;
-// $link-invert: $primary-invert;
-// $link-focus-border: $primary;
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
 
 
 
 
 // // Import Bulma and Buefy styles
-@import "node_modules/bulma/sass/base/_all";
+@import "node_modules/bulma/bulma.sass";
 @import "node_modules/buefy/src/scss/buefy.scss";
 
 
