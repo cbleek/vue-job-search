@@ -1,4 +1,10 @@
-# vue-job-search
+# Yavue
+
+yavue is a vue frontend for the job search in a YAWIK installation.
+
+Demo:
+
+http://yavue.de
 
 ## Project setup
 ```
