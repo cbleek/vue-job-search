@@ -1,3 +1,32 @@
+language: node_js
+
+node_js:
+  - "10"
+
+cache: npm
+
+.steps:
+  - &node-install |
+    npm install
+  - &run-server |
+    npm run serve > /dev/null 2>&1 &
+    sleep 5
+  - &run-lint |
+    npm run lint
+  - &build-demo |
+    npm run build
+install:
+  - *node-install
+  - *run-server
+
+script:
+  - *run-lint
+  - wget http://localhost:8080
+  - *build-demo
+
+before_deploy:
+  - *build-demo
+
 deploy:
   provider: pages
   skip_cleanup: true
