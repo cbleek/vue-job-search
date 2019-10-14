@@ -1,13 +1,10 @@
-import Vue from 'vue'
-import Buefy from 'buefy'
-
-import App from './App.vue'
-
-Vue.use(Buefy, {});
-Vue.prototype.$http = require('axios');
+import Vue from 'vue';
+import VueCustomElement from 'vue-custom-element';
+import Buefy from 'buefy';
+import Yavue from './components/Yavue.vue';
+import './assets/layout.scss';
 
 Vue.config.productionTip = false;
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+Vue.use(Buefy);
+Vue.use(VueCustomElement);
+Vue.customElement('yavue-widget',Yavue);
