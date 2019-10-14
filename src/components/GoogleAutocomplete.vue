@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    /* eslint-disable */
     const ADDRESS_COMPONENTS = {
         street_number: 'short_name',
         route: 'long_name',
