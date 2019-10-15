@@ -166,6 +166,7 @@
                 return this.apiEndpoint + '?' + queryStr;
             },
             load(pageNum = 1){
+                this.currentPage = pageNum;
                 const url = this.createUrl(pageNum);
                 const that = this;
                 this.loading = true;
