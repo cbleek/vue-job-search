@@ -5,13 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>vue-job-search</title>
+    <title>yavue</title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but vue-job-search doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but yavue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <yavue-widget
+            api-endpoint="https://yawik.org/demo/en/jobboard"
+    >
+      <div slot="header">
+        <h1>Override Header Job Search</h1>
+      </div>
+      <div slot="footer">
+        <h3>Override Footer</h3>
+      </div>
+    </yavue-widget>
     <!-- built files will be auto injected -->
   </body>
 </html>
