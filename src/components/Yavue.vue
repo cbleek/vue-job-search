@@ -70,16 +70,16 @@
 
 <script>
     import axios from 'axios';
+    import { YAVUE_GOOGLE_API_KEY } from "./Config";
 
     export default {
         components: {
             VueGoogleAutocomplete: () => {
-
-                const API_KEY = 'AIzaSyBqylRHHQ0fU2Pbs7ar4DidOEKqpE6SBP4';
-                return new Promise((resolve, reject) => {
+                const API_KEY = YAVUE_GOOGLE_API_KEY;
+                return new Promise((resolve) => {
                     let scriptElement = document.createElement('script');
                     scriptElement.onload = () => {
-                        resolve(import('./GoogleAutocomplete'));
+                        resolve(import('vue-google-autocomplete'));
                     };
                     scriptElement.id = 'gAutocompleteScript';
                     scriptElement.async = true;
@@ -111,7 +111,10 @@
             }
         },
         props: {
-            googleApiKey: 'AIzaSyBqylRHHQ0fU2Pbs7ar4DidOEKqpE6SBP4',
+            googleApiKey: {
+                type: String,
+                default: null
+            },
             apiEndpoint: {
                 type: String,
                 default: 'https://yawik.org/demo/de/jobboard'
@@ -134,12 +137,11 @@
             }
         },
         mounted: function(){
+            window.YAVUE_GOOGLE_KEY = this.googleApiKey;
             this.load();
         },
-        beforeCreate: function(){
-        },
         methods: {
-            createUrl(pageNum = 1){
+            createUrl(){
                 let query = {
                     json: 1
                 };

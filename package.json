@@ -13,6 +13,7 @@
     "buefy": "^0.8.5",
     "bulma": "^0.7.5",
     "core-js": "^2.6.5",
+    "dotenv": "^8.1.0",
     "vue": "^2.6.10",
     "vue-custom-element": "^3.2.9",
     "vue-google-autocomplete": "^1.1.0"
