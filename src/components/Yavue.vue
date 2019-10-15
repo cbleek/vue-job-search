@@ -24,6 +24,16 @@
                     :types="locationType"
             >
             </vue-google-autocomplete>
+            <b-field label="Distance">
+                <b-slider :min=0 :max=100 :step=5 ticks v-model="d">
+                    <b-slider-tick :value="0" :key="0">0km</b-slider-tick>
+                    <b-slider-tick :value="25" :key="25">25km</b-slider-tick>
+                    <b-slider-tick :value="50" :key="50">50km</b-slider-tick>
+                    <b-slider-tick :value="75" :key="75">75km</b-slider-tick>
+                    <b-slider-tick :value="100" :key="100">100km</b-slider-tick>
+
+                </b-slider>
+            </b-field>
             <p class="control">
                 <button @click="search" class="button is-primary">Search</button>
             </p>
@@ -93,6 +103,7 @@
         data: function(){
             return {
                 q: '',
+                d: 10,
                 currentPage: 1,
                 loading: false,
                 error: false,
@@ -147,6 +158,7 @@
                 };
 
                 if('' !== this.q) query.q = this.q;
+                query.d = this.d;
                 if(this.count) query.count = this.count;
                 if(this.currentPage) query.page = this.currentPage;
                 if(this.organization) query.o = this.organization;
