@@ -57,15 +57,18 @@
                       :default-sort="[sortField, sortOrder]"
                       @sort="onSort">
                 <template slot-scope="props">
-                    <b-table-column field="title" label="Title" sortable>
-                        <a :href="props.row.link">{{ props.row.title }}</a>
-                    </b-table-column>
-                    <b-table-column field="organization" label="Organization" sortable>
+                    <b-table-column field="organization" label="Organization">
                         <img style="width:80px" v-show="props.row.organizationLogo" :src="props.row.organizationLogo"/>
+                    </b-table-column>
+                    <b-table-column field="title" label="Title">
+                        <a :href="props.row.link">{{ props.row.title }}</a><br/>
                         {{ props.row.organization }}
                     </b-table-column>
-                    <b-table-column field="location" label="Location" sortable>
+                    <b-table-column field="location" label="Location">
                         {{ props.row.location }}
+                    </b-table-column>
+                    <b-table-column field="dateUpdated" label="Date" sortable>
+                        {{ props.row.dateStart }}
                     </b-table-column>
                 </template>
             </b-table>
