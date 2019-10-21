@@ -55,6 +55,7 @@
                       backend-sorting
                       :default-sort-direction="defaultSortOrder"
                       :default-sort="[sortField, sortOrder]"
+                      custom-row-key="id"
                       @sort="onSort">
                 <template slot-scope="props">
                     <b-table-column field="organization" label="Organization">
@@ -151,7 +152,6 @@
             }
         },
         mounted: function(){
-            window.YAVUE_GOOGLE_KEY = this.googleApiKey;
             this.load();
         },
         methods: {
@@ -180,9 +180,8 @@
 
                 return this.apiEndpoint + '?' + queryStr;
             },
-            load(pageNum = 1){
-                this.currentPage = pageNum;
-                const url = this.createUrl(pageNum);
+            load(){
+                const url = this.createUrl(this.currentPage);
                 const that = this;
                 this.loading = true;
                 axios.get(url)
@@ -197,13 +196,16 @@
             onSort: function(field, order){
                 this.sortField = field;
                 this.sortOrder = order;
+                this.currentPage = 1;
                 this.load();
             },
             onPageChange: function(page){
-                this.load(page);
+                this.currentPage = page;
+                this.load();
             },
             search(){
-                this.load(1);
+                this.currentPage = 1;
+                this.load();
             },
             filterLocation(addressData){
                 this.location = JSON.stringify({
