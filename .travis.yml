@@ -14,7 +14,8 @@ cache: npm
   - &run-lint |
     npm run lint
   - &build-demo |
-    npm run build
+    npm run build &
+    cp CNAME dist/
 install:
   - *node-install
   - *run-server
@@ -22,10 +23,10 @@ install:
 script:
   - *run-lint
   - wget http://localhost:8080
-  - *build-demo
 
 before_deploy:
   - *build-demo
+  - cp CNAME dist/
 
 deploy:
   provider: pages
