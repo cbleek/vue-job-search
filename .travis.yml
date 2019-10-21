@@ -25,7 +25,7 @@ script:
 
 before_deploy:
   - *run-build
-  - echo "yavue.de" >> CNAME
+  - echo "yavue.de" >> dist/CNAME
 
 deploy:
   provider: pages
