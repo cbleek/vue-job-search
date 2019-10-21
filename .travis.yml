@@ -13,9 +13,8 @@ cache: npm
     sleep 5
   - &run-lint |
     npm run lint
-  - &build-demo |
-    npm run build &
-    cp CNAME dist/
+  - &run-build |
+    npm run build
 install:
   - *node-install
   - *run-server
@@ -25,8 +24,8 @@ script:
   - wget http://localhost:8080
 
 before_deploy:
-  - *build-demo
-  - cp CNAME dist/
+  - *run-build
+  - echo "yavue.de" >> dist/CNAME
 
 deploy:
   provider: pages
