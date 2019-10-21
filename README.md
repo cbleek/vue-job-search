@@ -1,6 +1,7 @@
 # Yavue
 
-yavue is a vue frontend for the job search in a YAWIK installation.
+yavue is a vue frontend for the job search in a YAWIK installation. A Google API Key and a Yawik Endpoint can 
+be configured in .env or defined as ENV vars.
 
 Demo:
 
