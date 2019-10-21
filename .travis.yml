@@ -15,7 +15,7 @@ cache: npm
     npm run lint
   - &build-demo |
     npm run build &
-    cp CNAME dist/
+    pwd
 install:
   - *node-install
   - *run-server
